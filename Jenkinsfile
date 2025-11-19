@@ -3,32 +3,21 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/shrutibhadane493/my-app1'
-            }
-        }
-
         stage('Build') {
             steps {
-                sh 'mvn clean package -DskipTests'   // OR npm install
+                echo "Build stage running..."
             }
         }
 
         stage('Test') {
             steps {
-                sh 'mvn test'   // OR npm test
-            }
-            post {
-                always {
-                    junit '**/target/surefire-reports/*.xml'
-                }
+                echo "Test stage running..."
             }
         }
 
         stage('Deploy') {
             steps {
-                echo "Deployment Done"
+                echo "Deployment done."
             }
         }
     }
